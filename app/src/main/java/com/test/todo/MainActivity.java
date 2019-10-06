@@ -1,10 +1,15 @@
 package com.test.todo;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +25,7 @@ import com.shreyaspatil.firebase.recyclerpagination.DatabasePagingOptions;
 import com.shreyaspatil.firebase.recyclerpagination.FirebaseRecyclerPagingAdapter;
 import com.shreyaspatil.firebase.recyclerpagination.LoadingState;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private DatabaseReference mDatabase;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    final Calendar filterCal = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener filterDate;
+    Context mContext;
+    ImageButton dateFilter;
 
     FirebaseRecyclerPagingAdapter<Task, TaskViewHolder> mAdapter;
 
@@ -34,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mContext = this;
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
         //Initialize RecyclerView
@@ -141,5 +151,32 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.stopListening();
     }
 
+    private void DateFilter() {
+        dateFilter = findViewById(R.id.filterCal);
+        filterDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                filterCal.set(Calendar.YEAR, year);
+                filterCal.set(Calendar.MONTH, monthOfYear);
+                filterCal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            }
+
+        };
+
+        dateFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                new DatePickerDialog(mContext, filterDate, filterCal
+                        .get(Calendar.YEAR), filterCal.get(Calendar.MONTH),
+                        filterCal.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+    }
 
 }

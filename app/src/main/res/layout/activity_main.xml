@@ -42,7 +42,7 @@
                 />
 
             <ImageButton
-                android:id="@+id/filterBtn"
+                android:id="@+id/filterCal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
