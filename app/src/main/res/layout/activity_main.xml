@@ -31,7 +31,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
                 android:translationZ="10dp"
-                android:stateListAnimator="@null"/>
+                android:stateListAnimator="@null"
+                android:id="@+id/imgBtn"/>
 
             <SearchView
                 android:id="@+id/searchView"
