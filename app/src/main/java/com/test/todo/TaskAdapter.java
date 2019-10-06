@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
@@ -56,6 +58,8 @@ public class TaskAdapter extends RecyclerView.Adapter {
                     .resize(200, 200)
                     .into(viewHolder.taskImage);
         }
+
+
     }
 
     @Override
@@ -64,22 +68,5 @@ public class TaskAdapter extends RecyclerView.Adapter {
     }
 
 
-    private class TaskViewHolder extends RecyclerView.ViewHolder {
-        public TextView taskDesc;
-        public TextView createdByView;
-        public ImageView taskImage;
-        public TextView typeTag;
-        public SwitchCompat taskStatus;
-        public CardView taskCard;
 
-        public TaskViewHolder(View taskLayout) {
-            super(taskLayout);
-            taskDesc = taskLayout.findViewById(R.id.taskDesc);
-            createdByView = taskLayout.findViewById(R.id.createdByView);
-            taskImage = taskLayout.findViewById(R.id.taskImage);
-            typeTag = taskLayout.findViewById(R.id.typeTag);
-            taskStatus = taskLayout.findViewById(R.id.taskStatus);
-            taskCard = taskLayout.findViewById(R.id.taskCard);
-        }
-    }
 }

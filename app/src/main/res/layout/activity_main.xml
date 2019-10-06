@@ -1,49 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/swipe_refresh_layout"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <RelativeLayout
-        android:id="@+id/options"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="20dp"
-        android:paddingHorizontal="10dp">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="35dp"
-            android:text="Add"
-            android:drawablePadding="-10dp"
-            android:textAlignment="center"
-            android:paddingStart="20dp"
-            android:drawableStart="@drawable/ic_plus_red"
-            android:background="@drawable/addbutton"
-            android:fontFamily="@font/montserratregular"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/options"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@drawable/ic_filter"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:paddingHorizontal="10dp">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                app:elevation="10dp"
+                android:drawablePadding="-10dp"
+                android:textAlignment="center"
+                app:srcCompat="@drawable/ic_plus_red"
+                android:background="@drawable/addbutton"
+                android:fontFamily="@font/montserratregular"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:translationZ="10dp"
+                android:stateListAnimator="@null"/>
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="250dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+
+                />
+
+            <ImageButton
+                android:id="@+id/filterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:srcCompat="@drawable/ic_filter"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/taskRecView"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/options"
+            tools:listitem="@layout/taskcard"
             />
-
     </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/taskRecView"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="20dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/options"
-        tools:listitem="@layout/taskcard"
-        />
-</RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
