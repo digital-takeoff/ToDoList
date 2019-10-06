@@ -41,6 +41,3 @@ dependencies {
     implementation 'com.shreyaspatil:FirebaseRecyclerPagination:1.0.1'
     implementation 'com.sendgrid:sendgrid-java:4.4.1'
 }
-repositories {
-    mavenCentral()
-}
