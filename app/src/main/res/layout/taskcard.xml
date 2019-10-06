@@ -65,7 +65,7 @@
                 tools:text="Home" />
         </LinearLayout>
 
-        <androidx.appcompat.widget.SwitchCompat
+        <Switch
             android:id="@+id/taskStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

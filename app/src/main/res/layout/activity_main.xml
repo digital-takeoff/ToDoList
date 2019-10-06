@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                app:srcCompat="@drawable/ic_filter"
+                app:srcCompat="@drawable/ic_calendar_alt"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
                 />
