@@ -10,31 +10,43 @@
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:orientation="vertical"
         android:padding="10dp"
         android:background="@drawable/addbutton"
         android:fontFamily="@font/montserratsemibold"
         android:elevation="10dp">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="15dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/createdBy"
+                android:fontFamily="@font/montserratregular"
                 android:hint="Your name"
                 android:textStyle="bold"
                 >
 
             </EditText>
 
-            <EditText
+            <!--<CalendarView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:layout_marginTop="50dp"
+                android:contextClickable="true"
+                android:id="@+id/createdOn">
+
+            </CalendarView>-->
+
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Select Date"
+                android:fontFamily="@font/montserratregular"
                 android:id="@+id/createdOn"
                 android:inputType="datetime"
                 android:textStyle="bold">
@@ -42,10 +54,10 @@
             </EditText>
 
             <EditText
-                android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Task"
+                android:fontFamily="@font/montserratregular"
                 android:inputType="text"
                 android:id="@+id/task"
                 android:textStyle="bold">
@@ -53,64 +65,77 @@
             </EditText>
 
             <EditText
-                android:layout_marginTop="150dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Type"
                 android:inputType="text"
                 android:id="@+id/type"
+                android:fontFamily="@font/montserratregular"
                 android:textStyle="bold">
 
             </EditText>
 
             <EditText
-                android:layout_marginTop="200dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+                android:fontFamily="@font/montserratregular"
                 android:id="@+id/email"
                 android:inputType="textEmailAddress"
                 android:textStyle="bold">
 
             </EditText>
 
-            <Button
+            <!--<Button
                 android:layout_marginTop="250dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Choose file"
                 android:id="@+id/chooseImg"
-                android:background="@drawable/addbutton">
+                android:background="@drawable/addbutton"> -->
 
-            </Button>
-
-            <EditText
-                android:id="@+id/imageUrl"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="250dp"
-                android:hint="Enter file name"
-                android:layout_marginLeft="100dp"
-                android:inputType="text"
-                android:textStyle="bold">
+                android:layout_below="@id/email"
+                android:layout_marginTop="10dp">
 
-            </EditText>
+                <ImageButton
+                    android:id="@+id/chooseImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat = "@drawable/ic_upload"
+                    android:background="@null"
+                    android:layout_centerVertical="true" />
+
+                <EditText
+                    android:id="@+id/imageUrl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserratregular"
+                    android:layout_toRightOf="@id/chooseImg"
+                    android:layout_marginLeft="15dp"
+                    android:hint="Upload Image"
+                    android:focusable="false" />
+
+            </RelativeLayout>
+
 
             <Button
-                android:layout_marginTop="300dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add"
+                android:layout_margin="10dp"
+                android:text="Upload"
+                android:fontFamily="@font/montserratregular"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:id="@+id/addBtn"
                 android:background="@drawable/addbutton">
 
             </Button>
+        </LinearLayout>
 
-
-        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 

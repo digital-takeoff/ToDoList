@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -14,7 +15,10 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +31,10 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.net.URI;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -39,10 +46,12 @@ public class activity_add_user_task extends AppCompatActivity {
     private EditText email;
     private EditText imageUrl;
     private Button addBtn;
-    private Button chooseImg;
+    private ImageButton chooseImg;
     public String imageuri;
     DatabaseReference reff;
     private StorageReference mStorageRef;
+    final Calendar cal = Calendar.getInstance();
+    DatePickerDialog.OnDateSetListener datePickerDialog;
     Task task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +63,7 @@ public class activity_add_user_task extends AppCompatActivity {
         type = (EditText) findViewById(R.id.type);
         email = (EditText) findViewById(R.id.email);
         addBtn = (Button) findViewById(R.id.addBtn);
-        chooseImg = (Button) findViewById(R.id.chooseImg);
+        chooseImg = (ImageButton) findViewById(R.id.chooseImg);
         chooseImg.setOnClickListener(v ->{
             Filechooser();
         });
@@ -66,11 +75,12 @@ public class activity_add_user_task extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 task.setCreatedBy(createdBy.getText().toString());
+                task.setDateCreated(createdOn.toString());
                 task.setDateCreated(createdOn.getText().toString());
                 task.setTask(task1.getText().toString());
                 task.setType(type.getText().toString());
                 task.setUseremail(email.getText().toString());
-                if( createdOn.getText().toString().trim().equals(""))
+                if( createdOn.toString().trim().equals(""))
                 {
                     createdOn.setError( "Required!" );
                 }
@@ -123,6 +133,41 @@ public class activity_add_user_task extends AppCompatActivity {
             });
         }
 
+    private void startDatePicker() {
+        createdOn = findViewById(R.id.createdOn);
+        datePickerDialog = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, monthOfYear);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateDateField();
+            }
+
+        };
+
+        createdOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                new DatePickerDialog(getApplicationContext(), datePickerDialog, cal
+                        .get(Calendar.YEAR), cal.get(Calendar.MONTH),
+                        cal.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+    }
+
+    private void updateDateField() {
+        String myFormat = "dd-MM-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        createdOn.setText(sdf.format(cal.getTime()));
+    }
+
     private void Filechooser(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -154,4 +199,5 @@ public class activity_add_user_task extends AppCompatActivity {
         cursor.close();
         return result;
     }
+
 }
