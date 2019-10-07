@@ -101,15 +101,21 @@ public class activity_add_user_task extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    task.setImage("images/"+);
-                                    reff.push().setValue(task);
-                                    Toast.makeText(activity_add_user_task.this, "data inserted", Toast.LENGTH_LONG).show();
-                                    createdBy.setText("");
-                                    createdOn.setText("");
-                                    task1.setText("");
-                                    type.setText("");
-                                    email.setText("");
-                                    imageUrl.setText("");
+                                    mStorageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            task.setImage(uri.toString());
+                                            reff.push().setValue(task);
+                                            Toast.makeText(activity_add_user_task.this, "data inserted", Toast.LENGTH_LONG).show();
+                                            createdBy.setText("");
+                                            createdOn.setText("");
+                                            task1.setText("");
+                                            type.setText("");
+                                            email.setText("");
+                                            imageUrl.setText("");
+                                        }
+                                    });
+
                                 }
                             });
                     }
