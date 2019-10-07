@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ImageButton imgBtn;
 
+
     final Calendar filterCal = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener filterDate;
     Context mContext;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imgBtn = (ImageButton) findViewById(R.id.imgBtn);
+        imgBtn = (ImageButton) findViewById(R.id.addBtn);
         imgBtn.setOnClickListener((v) ->{
             Intent intent = new Intent(this, activity_add_user_task.class);
             startActivity(intent);

@@ -33,25 +33,15 @@
 
             </EditText>
 
-            <!--<CalendarView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:contextClickable="true"
-                android:id="@+id/createdOn">
-
-            </CalendarView>-->
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Select Date"
+                android:focusable="false"
                 android:fontFamily="@font/montserratregular"
                 android:id="@+id/createdOn"
                 android:inputType="datetime"
-                android:textStyle="bold">
-
-            </EditText>
+                android:textStyle="bold"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -85,14 +75,6 @@
                 android:textStyle="bold">
 
             </EditText>
-
-            <!--<Button
-                android:layout_marginTop="250dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Choose file"
-                android:id="@+id/chooseImg"
-                android:background="@drawable/addbutton"> -->
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -140,3 +122,4 @@
     </RelativeLayout>
 
 </RelativeLayout>
+<!--C:\Users\Shivam Singh\AndroidStudioProjects\To-DoList\app\build\outputs\apk\debug-->

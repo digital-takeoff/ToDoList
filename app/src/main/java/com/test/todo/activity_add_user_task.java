@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -53,12 +54,13 @@ public class activity_add_user_task extends AppCompatActivity {
     final Calendar cal = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener datePickerDialog;
     Task task;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user_task);
         createdBy = (EditText) findViewById(R.id.createdBy);
-        createdOn = (EditText) findViewById(R.id.createdOn);
+        datePicker();
         task1 = (EditText) findViewById(R.id.task);
         type = (EditText) findViewById(R.id.type);
         email = (EditText) findViewById(R.id.email);
@@ -68,6 +70,7 @@ public class activity_add_user_task extends AppCompatActivity {
             Filechooser();
         });
         imageUrl = (EditText) findViewById(R.id.imageUrl);
+        mContext = this;
         task = new Task();
         reff = FirebaseDatabase.getInstance().getReferenceFromUrl("https://todolist2-c16ea.firebaseio.com/");
         mStorageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://todolist2-c16ea.appspot.com").child("images/");
@@ -133,7 +136,7 @@ public class activity_add_user_task extends AppCompatActivity {
             });
         }
 
-    private void startDatePicker() {
+    private void datePicker() {
         createdOn = findViewById(R.id.createdOn);
         datePickerDialog = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -153,7 +156,7 @@ public class activity_add_user_task extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                new DatePickerDialog(getApplicationContext(), datePickerDialog, cal
+                new DatePickerDialog(mContext, datePickerDialog, cal
                         .get(Calendar.YEAR), cal.get(Calendar.MONTH),
                         cal.get(Calendar.DAY_OF_MONTH)).show();
             }
