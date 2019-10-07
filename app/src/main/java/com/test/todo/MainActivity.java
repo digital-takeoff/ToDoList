@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -168,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void filterByDate() {
-        String myFormat = "d-M-yyyy"; //In which you need put here
+        String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         String finalDate = (sdf.format(filterCal.getTime()));
         filter(null, finalDate, config);
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                     return new TaskViewHolder(LayoutInflater.from(parent.getContext()).
-                            inflate(R.layout.taskcard, parent, false));
+                            inflate(R.layout.taskcard, parent, false), getApplicationContext());
                 }
 
                 @Override
@@ -293,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
                                 tasks.add(task);
                             }
                             mRecyclerView.setAdapter(new TaskAdapter(tasks));
+
                         }
 
                         @Override

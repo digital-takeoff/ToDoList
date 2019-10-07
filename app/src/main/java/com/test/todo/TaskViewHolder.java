@@ -1,9 +1,15 @@
 package com.test.todo;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
@@ -18,8 +24,8 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
     public TextView typeTag;
     public Switch taskStatus;
     public CardView taskCard;
-
-    public TaskViewHolder(View taskLayout) {
+    public Context mContext;
+    public TaskViewHolder(View taskLayout, Context mContext) {
         super(taskLayout);
         taskDesc = taskLayout.findViewById(R.id.taskDesc);
         createdByView = taskLayout.findViewById(R.id.createdByView);
@@ -27,6 +33,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         typeTag = taskLayout.findViewById(R.id.typeTag);
         taskStatus = taskLayout.findViewById(R.id.taskStatus);
         taskCard = taskLayout.findViewById(R.id.taskCard);
+        this.mContext = mContext;
     }
 
     public void bindData(Task task) {
@@ -46,6 +53,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                     .resize(200, 200)
                     .into(taskImage);
         }
+
 
 
     }
