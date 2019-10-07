@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh_layout"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
@@ -20,6 +19,7 @@
             android:paddingHorizontal="10dp">
 
             <ImageButton
+                android:id="@+id/addBtn"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
                 app:elevation="10dp"
@@ -36,14 +36,26 @@
 
             <SearchView
                 android:id="@+id/searchView"
-                android:layout_width="250dp"
-                android:layout_centerHorizontal="true"
+                android:layout_width="200dp"
+                android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/addBtn" />
+
+            <ImageButton
+                android:id="@+id/filterBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                app:srcCompat="@drawable/ic_filter"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/filterCal"
+                android:layout_marginEnd="25dp"
+
 
                 />
 
             <ImageButton
-                android:id="@+id/filterBtn"
+                android:id="@+id/filterCal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
