@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@drawable/addbutton"
+        android:fontFamily="@font/montserratsemibold"
+        android:elevation="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/createdBy"
+                android:hint="Your name"
+                android:textStyle="bold"
+                >
+
+            </EditText>
+
+            <EditText
+                android:layout_marginTop="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select Date"
+                android:id="@+id/createdOn"
+                android:inputType="datetime"
+                android:textStyle="bold">
+
+            </EditText>
+
+            <EditText
+                android:layout_marginTop="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Task"
+                android:inputType="text"
+                android:id="@+id/task"
+                android:textStyle="bold">
+
+            </EditText>
+
+            <EditText
+                android:layout_marginTop="150dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type"
+                android:inputType="text"
+                android:id="@+id/type"
+                android:textStyle="bold">
+
+            </EditText>
+
+            <EditText
+                android:layout_marginTop="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:id="@+id/email"
+                android:inputType="textEmailAddress"
+                android:textStyle="bold">
+
+            </EditText>
+
+            <Button
+                android:layout_marginTop="250dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose file"
+                android:id="@+id/chooseImg"
+                android:background="@drawable/addbutton">
+
+            </Button>
+
+            <EditText
+                android:id="@+id/imageUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:hint="Enter file name"
+                android:layout_marginLeft="100dp"
+                android:inputType="text"
+                android:textStyle="bold">
+
+            </EditText>
+
+            <Button
+                android:layout_marginTop="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
+                android:id="@+id/addBtn"
+                android:background="@drawable/addbutton">
+
+            </Button>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
