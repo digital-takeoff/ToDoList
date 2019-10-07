@@ -1,5 +1,7 @@
 package com.test.todo;
 
+import android.text.Editable;
+
 public class Task {
 
     private String _id;
@@ -81,7 +83,7 @@ public class Task {
         this.type = type;
     }
 
-    public String getUseremail() {
+    public String getUseremail(String s) {
         return useremail;
     }
 

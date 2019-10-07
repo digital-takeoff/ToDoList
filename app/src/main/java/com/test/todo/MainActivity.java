@@ -1,6 +1,7 @@
 package com.test.todo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         imgBtn = (ImageButton) findViewById(R.id.imgBtn);
+        imgBtn.setOnClickListener((v) ->{
+            Intent intent = new Intent(this, activity_add_user_task.class);
+            startActivity(intent);
+        });
+
         mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
 
         //Initialize RecyclerView
